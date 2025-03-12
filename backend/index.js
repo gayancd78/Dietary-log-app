@@ -4,6 +4,9 @@ const dotenv = require("dotenv")
 const cors = require("cors")
 const bodyParser = require("body-parser");
 
+
+const UserRouter = require('./routers/UserRouter')
+
 dotenv.config()
 const PORT = process.env.PORT || 5000
 
@@ -21,7 +24,7 @@ mongoose.connect(process.env.MONGO_URI)
 
 // Define routes here
 
-
+app.use("/api/auth", UserRouter)
 
 app.listen(PORT, ()=>{
     console.log(`Server is running on ${PORT}`);
